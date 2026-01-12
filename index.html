@@ -1,0 +1,94 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    
+    <!-- アプリとしてダウンロード（ホーム画面追加）した際のフルスクリーン設定 -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="フラッシュ暗算">
+    
+    <title>Sparkle Flash Mental Math!</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@700;900&display=swap');
+        
+        body {
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+            overflow: hidden;
+            background-color: #3ABFF8;
+            font-family: 'M PLUS Rounded 1c', sans-serif;
+            margin: 0;
+            user-select: none;
+            height: 100dvh;
+            /* iPadのジェスチャーエリアを考慮 */
+            padding-bottom: env(safe-area-inset-bottom);
+        }
+
+        .text-outline {
+            text-shadow: 4px 4px 0 #fff, -4px -4px 0 #fff, 4px -4px 0 #fff, -4px 4px 0 #fff, 0 4px 0 #fff, 0 -4px 0 #fff, 4px 0 0 #fff, -4px 0 0 #fff;
+        }
+
+        .text-outline-dark {
+            text-shadow: 2px 2px 0 #4b5563, -2px -2px 0 #4b5563, 2px -2px 0 #4b5563, -2px 2px 0 #4b5563;
+        }
+
+        @keyframes floating {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(3deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+
+        .animate-floating {
+            animation: floating 4s ease-in-out infinite;
+        }
+
+        @keyframes popIn {
+            0% { transform: scale(0.5); opacity: 0; }
+            80% { transform: scale(1.05); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .animate-pop-in {
+            animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+
+        .animate-spin-slow {
+            animation: spin 8s linear infinite;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        button:active {
+            transform: scale(0.96);
+        }
+
+        /* 横向き時のコンテンツ高さ調整 */
+        @media (orientation: landscape) and (max-height: 800px) {
+            .landscape-compact {
+                transform: scale(0.85);
+                transform-origin: center;
+            }
+        }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/"
+  }
+}
+</script>
+</head>
+<body class="bg-[#3ABFF8]">
+    <div id="root"></div>
+</body>
+</html>
